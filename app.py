@@ -2,9 +2,12 @@ import streamlit as st
 import os
 import google.generativeai as genai
 from youtube_transcript_api import YouTubeTranscriptApi
-api="AIzaSyAEO66bFhkYF38P1Yd4iY-ND__uh0so6KM"
+from dotenv import load_dotenv
 
-genai.configure(api_key=api)
+# Load environment variables
+load_dotenv()
+genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
+
 
 prompt="""You are a YouTube summarizer tasked with condensing video transcripts into concise summaries. 
 Your goal is to efficiently extract the most crucial information from the video and
